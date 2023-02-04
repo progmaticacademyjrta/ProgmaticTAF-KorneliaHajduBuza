@@ -4,31 +4,25 @@ import hu.progmatic.driverfactory.DriverBaseTest;
 import hu.progmatic.pages.*;
 import org.testng.annotations.Test;
 
-public class CuraEndToEndTest extends DriverBaseTest {
+public class AppointmentSummaryTests extends DriverBaseTest {
     HomePage homePage;
     LoginPage loginPage;
     AppointmentPage appointmentPage;
     ProfilePage profilePage;
-    Menu menu;
+    AppointmentSummaryPage appointmentSummaryPage;
 
-    @Test(groups = "smoke", description = "TC08: End-to-end test: testing login, make appointment, navigate to summary page and logout.")
-    public void curaEndToEndTest() throws InterruptedException {
+    @Test(groups = "regression", description = "TC09: Testing clicking on Go to Home button navigates to the home page.")
+    public void goToHomepageButtonTest() throws InterruptedException {
         homePage = new HomePage(driver, wait);
         loginPage = new LoginPage(driver, wait);
         appointmentPage = new AppointmentPage(driver, wait);
-        profilePage = new ProfilePage(driver, wait);
-        menu = new Menu(driver, wait);
+        appointmentSummaryPage = new AppointmentSummaryPage(driver, wait);
 
         homePage.loadHomePage();
         homePage.clickOnMakeAppointment();
         loginPage.loginSuccessful("John Doe", "ThisIsNotAPassword");
         appointmentPage.makeAppointment();
-        menu.chooseHistoryMenu();
-        profilePage.loadingProfilePage();
-        loginPage.logout();
+        appointmentSummaryPage.clickingOnGoToHomePageButton();
+
     }
-
-
-
-
 }

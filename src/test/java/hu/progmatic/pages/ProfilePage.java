@@ -26,7 +26,7 @@ public class ProfilePage {
 
         WebElement profileMenu = driver.findElement(profileMenuBy);
         profileMenu.click();
-        
+
         WebElement logoutButton = driver.findElement(logoutButtonBy);
 
         Assert.assertTrue(logoutButton.isDisplayed());
